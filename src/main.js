@@ -19,7 +19,6 @@ function mostrarProductos(lista) {
   `).join('')
 }
 
-// --- CÓDIGO DEL EJERCICIO 3 ---
 
 function mostrarPedido() {
   // Dibuja los productos en la lista del aside
@@ -56,3 +55,30 @@ btnVaciar.addEventListener('click', () => {
 // ------------------------------
 
 mostrarProductos(productos)
+// --- CÓDIGO DEL EJERCICIO 4 (Filtros) ---
+const contenedorFiltros = document.querySelector('#filtros')
+
+contenedorFiltros.addEventListener('click', (evento) => {
+  // Verificamos que se haya hecho clic en un botón de filtro
+  const boton = evento.target.closest('.btn-filtro')
+  if (!boton) return
+  
+  const categoria = boton.dataset.categoria
+  
+  // 1. Quitar el color azul a todos los botones y ponerlos blancos
+  document.querySelectorAll('.btn-filtro').forEach(btn => {
+    btn.className = 'btn-filtro bg-white text-gray-800 border px-4 py-2 rounded font-bold hover:bg-gray-100 transition'
+  })
+  
+  // 2. Ponerle el color azul solo al botón que recibió el clic
+  boton.className = 'btn-filtro bg-blue-600 text-white px-4 py-2 rounded font-bold transition'
+  
+  // 3. Filtrar los productos
+  if (categoria === 'Todos') {
+    mostrarProductos(productos)
+  } else {
+    // Si eligió una categoría, crea una lista solo con los que coincidan
+    const productosFiltrados = productos.filter(p => p.categoria === categoria)
+    mostrarProductos(productosFiltrados)
+  }
+})
