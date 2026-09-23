@@ -7,11 +7,27 @@
   </header>
 
   <!-- Contenido principal -->
-  <main class="flex-grow p-8 max-w-5xl mx-auto w-full">
+  <main class="flex-grow p-8 max-w-7xl mx-auto w-full">
     
-    <!-- Contenedor del catálogo con la cuadrícula responsiva -->
-    <!-- (AQUÍ BORRAMOS LAS TARJETAS PARA QUE JAVASCRIPT LAS DIBUJE) -->
-    <div id="catalogo" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <!-- Contenedor flexible para dividir en dos columnas -->
+    <div class="flex flex-col md:flex-row gap-8">
+      
+      <!-- Sección izquierda: El catálogo -->
+      <div class="flex-1">
+        <div id="catalogo" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        </div>
+      </div>
+
+      <!-- Sección derecha: El pedido (Ejercicio 3) -->
+      <aside class="w-full md:w-1/3 bg-white p-6 rounded-lg shadow h-fit">
+        <h2 class="text-2xl font-bold mb-4 border-b pb-2">Mi pedido</h2>
+        <ul id="lista-pedido" class="mb-4 space-y-2 text-gray-700">
+          <!-- Aquí aparecerán los productos -->
+        </ul>
+        <p class="text-xl font-bold border-t pt-4">Total: $<span id="total">0</span>.00</p>
+        <button id="btn-vaciar" class="w-full mt-4 bg-red-600 text-white font-bold py-2 rounded hover:bg-red-800">Vaciar pedido</button>
+      </aside>
+
     </div>
 
   </main>
